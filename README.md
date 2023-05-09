@@ -9,7 +9,31 @@ Python project using a gradio interface to query an online pdf document using la
 ## Quickstart
 Using a machine with python installed
 Clone or download this repo
-Make sure all the python packages in requirements.txt file are installed
+
+Make sure that python and virual environment is installed.
+    
+### Create a new virtual environment
+    
+
+#### one time
+```
+virtualenv -p $(which python3) pyenv
+```
+
+#### everytime you want to run the server
+```
+source pyenv/bin/activate
+```
+
+### Now install the requirements
+
+```
+pip install -r requirements.txt
+```
+
+
+
+
 Rename the .env-template file to .env 
 Edit the .env file entering your OpenAI GPT API key (see below for details) after the equals sign on the first line
 

@@ -5,3 +5,4 @@ streamlit==1.18.1
 gradio==3.28.3
 gradio_client==0.1.4
 requests==2.29.0
+gTTS==2.3.1

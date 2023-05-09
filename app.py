@@ -9,6 +9,7 @@ from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 from langchain.callbacks import get_openai_callback
+from gtts import gTTS
 
 # https://stackoverflow.com/questions/9751197/opening-pdf-urls-with-pypdf
 def get_pdf_from_url(url):
@@ -47,13 +48,15 @@ def questiondocument(user_question, url):
     chain = load_qa_chain(llm, chain_type="stuff")
     with get_openai_callback() as cb:
       response = chain.run(input_documents=docs, question=user_question)
+    audio = gTTS(response)
+    audio.save("output.mp3")
 
     cost = cb
-    return response, cost
+    return response, cost, "output.mp3"
 
 demo = gr.Interface(
     fn=questiondocument,
     inputs=["text", "text"],
-    outputs=["text","text"],
+    outputs=["text","text","audio"],
 )
 demo.launch(share=True)
